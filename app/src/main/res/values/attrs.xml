@@ -1,0 +1,17 @@
+<resources>
+    <declare-styleable name="typeFonts">
+        <attr name="fontTypeThin" format="string" />
+        <attr name="fontTypeLight" format="string" />
+        <attr name="fontTypeRegular" format="string" />
+        <attr name="fontTypeMedium" format="string" />
+        <attr name="fontTypeBold" format="string" />
+    </declare-styleable>
+
+
+    <declare-styleable name="customColor">
+        <attr name="colorBackgroundOfContainerCard" format="color" />
+        <attr name="colorBackgroundOfContainerText" format="color" />
+        <attr name="colorNameCharactersInCard" format="color" />
+        <attr name="colorDescriptionCharactersInCard" format="color" />
+    </declare-styleable>
+</resources>
