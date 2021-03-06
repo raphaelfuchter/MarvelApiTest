@@ -8,7 +8,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.rf.marvelapitest.R
 import com.rf.marvelapitest.models.character.CharactersResult
-import com.rf.marvelapitest.ui.intefaces.OnClickDetails
+import com.rf.marvelapitest.ui.interfaces.OnClickDetails
 import com.squareup.picasso.Picasso
 
 class CharactersAdapter(private var listresult: List<CharactersResult>, private val listener: OnClickDetails)
@@ -22,14 +22,14 @@ class CharactersAdapter(private var listresult: List<CharactersResult>, private 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val resultlist = listresult[position]
         holder.onBind(resultlist)
-        holder.itemView.setOnClickListener { listener.Onclick(resultlist) }
+        holder.itemView.setOnClickListener { listener.onclick(resultlist) }
     }
 
     override fun getItemCount(): Int {
         return listresult.size
     }
 
-    fun UpdateList(resultList: List<CharactersResult>) {
+    fun updateList(resultList: List<CharactersResult>) {
         listresult = resultList
         notifyDataSetChanged()
     }

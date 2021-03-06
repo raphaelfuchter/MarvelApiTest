@@ -5,7 +5,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.Observer
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
@@ -13,10 +12,10 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.rf.marvelapitest.R
 import com.rf.marvelapitest.databinding.FragmentFirstBinding
-import com.rf.marvelapitest.models.MarvelEndPoints.RESULT_KEY
+import com.rf.marvelapitest.models.EndPoints.RESULT_KEY
 import com.rf.marvelapitest.models.character.CharactersResult
 import com.rf.marvelapitest.ui.adapter.CharactersAdapter
-import com.rf.marvelapitest.ui.intefaces.OnClickDetails
+import com.rf.marvelapitest.ui.interfaces.OnClickDetails
 import com.rf.marvelapitest.ui.viewmodel.CharactersViewModel
 import kotlinx.android.synthetic.main.fragment_first.*
 import java.util.ArrayList
@@ -51,11 +50,11 @@ class CharactersFragment : Fragment(), OnClickDetails {
 
     private fun instanceViewModel() {
         viewModel!!.getCharactersViewModel()
-        viewModel!!.listCharacters.observe(viewLifecycleOwner, Observer { resultList: List<CharactersResult>? ->
-            adapter!!.UpdateList(resultList!!)
+        viewModel!!.listCharacters.observe(viewLifecycleOwner, { resultList: List<CharactersResult>? ->
+            adapter!!.updateList(resultList!!)
         })
 
-        viewModel!!.loading().observe(viewLifecycleOwner, Observer { loading: Boolean ->
+        viewModel!!.loading().observe(viewLifecycleOwner, { loading: Boolean ->
             if (loading) {
                 progressBar!!.visibility = View.VISIBLE
             } else {
@@ -84,9 +83,9 @@ class CharactersFragment : Fragment(), OnClickDetails {
         })
     }
 
-    override fun Onclick(result: CharactersResult?) {
+    override fun onclick(character: CharactersResult?) {
         val bundle = Bundle()
-        bundle.putParcelable(RESULT_KEY, result)
+        bundle.putParcelable(RESULT_KEY, character)
         findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment, bundle)
 
         //val intent = Intent(this, DetailsActivity::class.java)

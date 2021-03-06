@@ -1,7 +1,7 @@
-package com.rf.marvelapitest.ui.intefaces
+package com.rf.marvelapitest.ui.interfaces
 
 import com.rf.marvelapitest.models.character.CharactersResult
 
 interface OnClickDetails {
-    fun Onclick(result: CharactersResult?)
+    fun onclick(character: CharactersResult?)
 }

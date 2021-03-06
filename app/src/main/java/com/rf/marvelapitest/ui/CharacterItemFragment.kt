@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.rf.marvelapitest.R
-import com.rf.marvelapitest.models.MarvelEndPoints.RESULT_KEY
+import com.rf.marvelapitest.models.EndPoints.RESULT_KEY
 import com.rf.marvelapitest.models.character.CharactersResult
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_second.*

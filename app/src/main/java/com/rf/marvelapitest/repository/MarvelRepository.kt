@@ -1,6 +1,6 @@
 package com.rf.marvelapitest.repository
 
-import com.rf.marvelapitest.models.MarvelEndPoints.PUBLIC_API_KEY
+import com.rf.marvelapitest.models.EndPoints.PUBLIC_API_KEY
 import com.rf.marvelapitest.network.getTimeStamp
 import com.rf.marvelapitest.network.RetrofitService.Companion.getApiService
 import com.rf.marvelapitest.models.character.CharactersResponse

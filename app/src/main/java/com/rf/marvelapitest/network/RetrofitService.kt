@@ -1,8 +1,8 @@
 package com.rf.marvelapitest.network
 
-import com.rf.marvelapitest.models.MarvelEndPoints.BASE_URL
-import com.rf.marvelapitest.models.MarvelEndPoints.PRIVATE_API_KEY
-import com.rf.marvelapitest.models.MarvelEndPoints.PUBLIC_API_KEY
+import com.rf.marvelapitest.models.EndPoints.BASE_URL
+import com.rf.marvelapitest.models.EndPoints.PRIVATE_API_KEY
+import com.rf.marvelapitest.models.EndPoints.PUBLIC_API_KEY
 
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
