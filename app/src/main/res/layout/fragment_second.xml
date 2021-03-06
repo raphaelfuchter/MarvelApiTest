@@ -3,31 +3,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <data>
-
-        <variable
-            name="character"
-            type="com.rf.marvelapitest.models.character.CharactersResult" />
-    </data>
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <ImageView
-            android:id="@+id/imageCharacter2"
+            android:id="@+id/imageCharacterBackground"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:contentDescription="Thumbnails of character"
+            android:contentDescription="@string/thumbnails_character"
             android:scaleType="centerCrop"
             tools:ignore="HardcodedText"
             tools:src="@drawable/thumb" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="?attr/colorBackgroundOfContainerCard" />
-
 
         <LinearLayout
             android:id="@+id/containerName"
@@ -35,7 +22,6 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_16"
             android:layout_marginTop="@dimen/margin_32"
-            android:background="?attr/colorBackgroundOfContainerText"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -49,7 +35,6 @@
                 android:layout_marginEnd="@dimen/margin_16"
                 android:layout_marginStart="@dimen/margin_16"
                 android:gravity="end"
-                android:textColor="?attr/colorNameCharactersInCard"
                 android:textSize="@dimen/text_size_26"
                 tools:text="Aqua man" />
 
@@ -61,7 +46,6 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_16"
             android:layout_marginTop="@dimen/margin_16"
-            android:background="?attr/colorBackgroundOfContainerText"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/containerName">
@@ -74,9 +58,8 @@
                 android:layout_marginBottom="@dimen/margin_4"
                 android:layout_marginEnd="@dimen/margin_16"
                 android:layout_marginStart="@dimen/margin_16"
-                android:textColor="?attr/colorDescriptionCharactersInCard"
                 android:textSize="@dimen/text_size_18"
-                tools:text="Bla blaBla blaBla blaBla blaBla blaBla blaBla blaBla bla " />
+                tools:text="descricao" />
 
         </LinearLayout>
 

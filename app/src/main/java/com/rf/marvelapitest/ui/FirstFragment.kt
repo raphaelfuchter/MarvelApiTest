@@ -8,10 +8,14 @@ import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.Navigator
+import androidx.navigation.fragment.FragmentNavigatorExtras
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.rf.marvelapitest.R
 import com.rf.marvelapitest.databinding.FragmentFirstBinding
+import com.rf.marvelapitest.models.MarvelEndPoints.RESULT_KEY
 import com.rf.marvelapitest.models.character.CharactersResult
 import com.rf.marvelapitest.ui.adapter.CharactersAdapter
 import com.rf.marvelapitest.ui.core.platform.OnClickDetails
@@ -19,9 +23,6 @@ import com.rf.marvelapitest.ui.viewmodel.CharactersViewModel
 import kotlinx.android.synthetic.main.fragment_first.*
 import java.util.ArrayList
 
-/**
- * A simple [Fragment] subclass as the default destination in the navigation.
- */
 class FirstFragment : Fragment(), OnClickDetails {
 
     private var adapter: CharactersAdapter? = null
@@ -34,21 +35,15 @@ class FirstFragment : Fragment(), OnClickDetails {
             inflater: LayoutInflater, container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View {
-        // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_first, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         initVariables()
         instanceViewModel()
         instanceRecyclerView()
-
-        //view.findViewById<Button>(R.id.button_first).setOnClickListener {
-            ///findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
-        //}
     }
 
     private fun initVariables() {
@@ -92,6 +87,10 @@ class FirstFragment : Fragment(), OnClickDetails {
     }
 
     override fun Onclick(result: CharactersResult?) {
+        val bundle = Bundle()
+        bundle.putParcelable(RESULT_KEY, result)
+        findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment, bundle)
+
         //val intent = Intent(this, DetailsActivity::class.java)
         //val bundle = Bundle()
         //bundle.putParcelable(RESULT_KEY, result)
