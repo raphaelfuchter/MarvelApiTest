@@ -1,4 +1,4 @@
-package com.rf.marvelapitest.ui.core.platform
+package com.rf.marvelapitest.ui.intefaces
 
 import com.rf.marvelapitest.models.character.CharactersResult
 

@@ -1,6 +1,5 @@
 package com.rf.marvelapitest.ui.adapter
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,7 +8,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.rf.marvelapitest.R
 import com.rf.marvelapitest.models.character.CharactersResult
-import com.rf.marvelapitest.ui.core.platform.OnClickDetails
+import com.rf.marvelapitest.ui.intefaces.OnClickDetails
 import com.squareup.picasso.Picasso
 
 class CharactersAdapter(private var listresult: List<CharactersResult>, private val listener: OnClickDetails)
@@ -49,7 +48,7 @@ class CharactersAdapter(private var listresult: List<CharactersResult>, private 
 
         fun onBind(result: CharactersResult) {
             Picasso.get()
-                .load(result.thumbnail.path + "." + result.thumbnail.extension)
+                .load(result.thumbnail.getCompletePath())
                 .placeholder(R.drawable.thumb)
                 .error(R.drawable.thumb)
                 .fit()

@@ -3,8 +3,6 @@ package com.rf.marvelapitest.network
 import com.rf.marvelapitest.models.MarvelEndPoints.BASE_URL
 import com.rf.marvelapitest.models.MarvelEndPoints.PRIVATE_API_KEY
 import com.rf.marvelapitest.models.MarvelEndPoints.PUBLIC_API_KEY
-import com.rf.marvelapitest.extensions.Criptografia
-import com.rf.marvelapitest.extensions.getTimeStamp
 
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit

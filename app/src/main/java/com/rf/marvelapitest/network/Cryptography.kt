@@ -1,4 +1,4 @@
-package com.rf.marvelapitest.extensions
+package com.rf.marvelapitest.network
 
 import java.security.MessageDigest
 import java.security.NoSuchAlgorithmException

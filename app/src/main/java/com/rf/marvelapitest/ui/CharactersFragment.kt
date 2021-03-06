@@ -8,8 +8,6 @@ import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProviders
-import androidx.navigation.Navigator
-import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -18,12 +16,12 @@ import com.rf.marvelapitest.databinding.FragmentFirstBinding
 import com.rf.marvelapitest.models.MarvelEndPoints.RESULT_KEY
 import com.rf.marvelapitest.models.character.CharactersResult
 import com.rf.marvelapitest.ui.adapter.CharactersAdapter
-import com.rf.marvelapitest.ui.core.platform.OnClickDetails
+import com.rf.marvelapitest.ui.intefaces.OnClickDetails
 import com.rf.marvelapitest.ui.viewmodel.CharactersViewModel
 import kotlinx.android.synthetic.main.fragment_first.*
 import java.util.ArrayList
 
-class FirstFragment : Fragment(), OnClickDetails {
+class CharactersFragment : Fragment(), OnClickDetails {
 
     private var adapter: CharactersAdapter? = null
     private val resultList: List<CharactersResult> = ArrayList()

@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/FirstFragment"
-        android:name="com.rf.marvelapitest.ui.FirstFragment"
+        android:name="com.rf.marvelapitest.ui.CharactersFragment"
         android:label="@string/first_fragment_label"
         tools:layout="@layout/fragment_first">
         <action
@@ -17,7 +17,7 @@
 
     <fragment
         android:id="@+id/SecondFragment"
-        android:name="com.rf.marvelapitest.ui.SecondFragment"
+        android:name="com.rf.marvelapitest.ui.CharacterItemFragment"
         android:label="@string/second_fragment_label"
         tools:layout="@layout/fragment_second">
         <action

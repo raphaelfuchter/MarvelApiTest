@@ -11,7 +11,7 @@ import com.rf.marvelapitest.models.character.CharactersResult
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_second.*
 
-class SecondFragment : Fragment() {
+class CharacterItemFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,7 +35,7 @@ class SecondFragment : Fragment() {
 
     private fun loadImages(result: CharactersResult?) {
         Picasso.get()
-            .load(result!!.thumbnail.path + "." + result.thumbnail.extension)
+            .load(result!!.thumbnail.getCompletePath())
             .placeholder(R.drawable.thumb)
             .error(R.drawable.thumb)
             .fit()

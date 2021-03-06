@@ -2,6 +2,7 @@ package com.rf.marvelapitest.models.character
 
 import android.os.Parcel
 import android.os.Parcelable
+import androidx.lifecycle.MutableLiveData
 import com.google.gson.annotations.Expose
 
 class Thumbnail() : Parcelable {
@@ -33,6 +34,18 @@ class Thumbnail() : Parcelable {
         override fun newArray(size: Int): Array<Thumbnail?> {
             return arrayOfNulls(size)
         }
+    }
+
+    fun getCompletePath(): String? {
+        var imagePath: String? = null
+        if (!path!!.contains("image_not_available")) {
+            imagePath = path!!.replace(
+                "http",
+                "https"
+            ) + "." + extension
+        }
+
+        return imagePath
     }
 
 }
