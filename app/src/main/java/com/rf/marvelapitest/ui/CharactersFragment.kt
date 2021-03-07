@@ -89,7 +89,7 @@ class CharactersFragment : BaseFragment(), OnClickDetails {
         refreshView.setOnRefreshListener {
             viewModel.getCharactersViewModel()
             if (refreshView.isRefreshing) {
-                refreshView.isRefreshing = false;
+                refreshView.isRefreshing = false
             }
         }
     }

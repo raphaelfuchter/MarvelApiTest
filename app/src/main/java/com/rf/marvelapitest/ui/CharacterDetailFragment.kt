@@ -9,6 +9,7 @@ import com.rf.marvelapitest.R
 import com.rf.marvelapitest.models.EndPoints.RESULT_KEY
 import com.rf.marvelapitest.models.character.CharactersResult
 import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.fragment_characters.*
 import kotlinx.android.synthetic.main.fragment_characters_detail.*
 
 class CharacterDetailFragment : Fragment() {
@@ -30,7 +31,12 @@ class CharacterDetailFragment : Fragment() {
 
     private fun setAsViews(result: CharactersResult?) {
         nameCharacter!!.text = result!!.name
-        descriptionCharacter!!.text = result.description
+        if (result.description.isNullOrEmpty()) {
+            descriptionCharacter!!.visibility = View.GONE
+        } else {
+            descriptionCharacter!!.visibility = View.VISIBLE
+            descriptionCharacter!!.text = result.description
+        }
     }
 
     private fun loadImages(result: CharactersResult?) {
