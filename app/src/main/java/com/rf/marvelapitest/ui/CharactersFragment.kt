@@ -9,6 +9,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.rf.marvelapitest.R
 import com.rf.marvelapitest.databinding.FragmentCharactersBinding
 import com.rf.marvelapitest.models.EndPoints.RESULT_KEY
@@ -19,7 +20,8 @@ import com.rf.marvelapitest.ui.interfaces.BaseFragment
 import com.rf.marvelapitest.ui.interfaces.OnClickDetails
 import com.rf.marvelapitest.ui.viewmodel.CharactersViewModel
 import kotlinx.android.synthetic.main.fragment_characters.*
-import java.util.ArrayList
+import java.util.*
+
 
 class CharactersFragment : BaseFragment(), OnClickDetails {
 
@@ -30,8 +32,8 @@ class CharactersFragment : BaseFragment(), OnClickDetails {
     private lateinit var binding: FragmentCharactersBinding
 
     override fun onCreateView(
-            inflater: LayoutInflater, container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_characters, container, false)
         return binding.root
@@ -49,9 +51,11 @@ class CharactersFragment : BaseFragment(), OnClickDetails {
 
     private fun instanceViewModel() {
         viewModel.getCharactersViewModel()
-        viewModel.listCharacters.observe(viewLifecycleOwner, { resultList: List<CharactersResult>? ->
-            adapter!!.updateList(resultList!!)
-        })
+        viewModel.listCharacters.observe(
+            viewLifecycleOwner,
+            { resultList: List<CharactersResult>? ->
+                adapter!!.updateList(resultList!!)
+            })
 
         viewModel.loading().observe(viewLifecycleOwner, { loading: Boolean ->
             if (loading) {
@@ -80,6 +84,13 @@ class CharactersFragment : BaseFragment(), OnClickDetails {
                 }
             }
         })
+
+        refreshView.setOnRefreshListener {
+            viewModel.getCharactersViewModel()
+            if (refreshView.isRefreshing) {
+                refreshView.isRefreshing = false;
+            }
+        }
     }
 
     override fun onclick(character: CharactersResult?) {
