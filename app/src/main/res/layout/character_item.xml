@@ -25,21 +25,32 @@
             android:scaleType="centerCrop"
             tools:src="@drawable/thumb" />
 
-        <TextView
-            android:id="@+id/nameCharacter"
-            style="@style/fontBold"
-            android:layout_width="match_parent"
+        <LinearLayout
+            android:id="@+id/containerName"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/margin_4"
-            android:layout_marginEnd="@dimen/margin_16"
             android:layout_marginStart="@dimen/margin_16"
-            android:gravity="end"
-            android:textSize="@dimen/text_size_16"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginTop="@dimen/margin_10"
             app:layout_constraintEnd_toEndOf="parent"
-            android:textColor="@color/white"
-            tools:text="Name">
 
-        </TextView>
+            android:background="?attr/colorBackgroundOfContainerText"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/nameCharacter"
+                style="@style/fontBold"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/margin_4"
+                android:layout_marginEnd="@dimen/margin_16"
+                android:layout_marginStart="@dimen/margin_16"
+                android:gravity="end"
+                android:textSize="@dimen/text_size_16"
+                android:textColor="?attr/colorNameCharactersInCard"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:text="Name"/>
+
+        </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.material.card.MaterialCardView>
