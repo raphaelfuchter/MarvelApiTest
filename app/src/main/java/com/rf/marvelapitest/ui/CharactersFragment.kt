@@ -9,7 +9,6 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.rf.marvelapitest.R
 import com.rf.marvelapitest.databinding.FragmentCharactersBinding
 import com.rf.marvelapitest.models.EndPoints.RESULT_KEY
@@ -60,8 +59,10 @@ class CharactersFragment : BaseFragment(), OnClickDetails {
         viewModel.loading().observe(viewLifecycleOwner, { loading: Boolean ->
             if (loading) {
                 progressBar!!.visibility = View.VISIBLE
+                rvCharacters!!.visibility = View.GONE
             } else {
                 progressBar!!.visibility = View.GONE
+                rvCharacters!!.visibility = View.VISIBLE
             }
         })
     }
