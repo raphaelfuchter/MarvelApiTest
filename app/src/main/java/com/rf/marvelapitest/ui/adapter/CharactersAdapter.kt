@@ -48,12 +48,12 @@ class CharactersAdapter(private var listresult: List<CharactersResult>, private 
 
         fun onBind(result: CharactersResult) {
             Picasso.get()
-                .load(result.thumbnail.getCompletePath())
-                .placeholder(R.drawable.thumb)
-                .error(R.drawable.thumb)
-                .fit()
-                .centerInside()
-                .into(imageView)
+                    .load(result.thumbnail.getCompletePath())
+                    .placeholder(R.drawable.thumb)
+                    .error(R.drawable.thumb)
+                    .fit()
+                    .centerInside()
+                    .into(imageView)
             textViewName.text = result.name
         }
 

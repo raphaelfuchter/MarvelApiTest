@@ -24,7 +24,7 @@ class Criptografia {
 
 
         /**
-         * Cria um hash MD5 par enviarmos a API da marvel
+         * Cria um hash MD5 para enviar a API da marvel
          */
         fun md5(s: String): String? {
             try { // Create MD5 Hash
@@ -39,8 +39,9 @@ class Criptografia {
 
     }
 }
-    fun getTimeStamp(): String {
-        val ts = Calendar.getInstance().timeInMillis / 1000
-        return ts.toString()
+
+fun getTimeStamp(): String {
+    val ts = Calendar.getInstance().timeInMillis / 1000
+    return ts.toString()
 
 }

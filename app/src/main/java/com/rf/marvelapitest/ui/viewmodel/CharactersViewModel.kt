@@ -1,6 +1,7 @@
 package com.rf.marvelapitest.ui.viewmodel
 
 import android.app.Application
+import android.content.Context
 import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
@@ -9,12 +10,13 @@ import com.rf.marvelapitest.models.character.CharactersResponse
 import com.rf.marvelapitest.models.character.CharactersResult
 
 import com.rf.marvelapitest.repository.MarvelRepository
+import com.rf.marvelapitest.ui.interfaces.BaseViewModel
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 
-class CharactersViewModel(application: Application) : AndroidViewModel(application) {
+class CharactersViewModel(application: Application) : BaseViewModel(application) {
     private val listResult = MutableLiveData<List<CharactersResult>>()
     private val loading = MutableLiveData<Boolean>()
     private val disposable = CompositeDisposable()
@@ -32,10 +34,11 @@ class CharactersViewModel(application: Application) : AndroidViewModel(applicati
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnSubscribe { loading.setValue(true) }
                 .doOnTerminate { loading.setValue(false) }
-                .flatMap { comicsResponse: CharactersResponse ->
-                    Observable.just(comicsResponse.data.results)
+                .flatMap { charactersResponse: CharactersResponse ->
+                    Observable.just(charactersResponse.data.results)
                 }
-                .subscribe(listResult::setValue
+                .subscribe(
+                    listResult::setValue
                 ) { throwable: Throwable ->
                     Log.i("LOG", "Error: " + throwable.message)
                 }

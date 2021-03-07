@@ -1,60 +1,59 @@
 package com.rf.marvelapitest.ui
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.ViewModelProviders
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.rf.marvelapitest.R
-import com.rf.marvelapitest.databinding.FragmentFirstBinding
+import com.rf.marvelapitest.databinding.FragmentCharactersBinding
 import com.rf.marvelapitest.models.EndPoints.RESULT_KEY
 import com.rf.marvelapitest.models.character.CharactersResult
+import com.rf.marvelapitest.network.isNetworkAvailable
 import com.rf.marvelapitest.ui.adapter.CharactersAdapter
+import com.rf.marvelapitest.ui.interfaces.BaseFragment
 import com.rf.marvelapitest.ui.interfaces.OnClickDetails
 import com.rf.marvelapitest.ui.viewmodel.CharactersViewModel
-import kotlinx.android.synthetic.main.fragment_first.*
+import kotlinx.android.synthetic.main.fragment_characters.*
 import java.util.ArrayList
 
-class CharactersFragment : Fragment(), OnClickDetails {
+class CharactersFragment : BaseFragment(), OnClickDetails {
 
     private var adapter: CharactersAdapter? = null
     private val resultList: List<CharactersResult> = ArrayList()
-    private var viewModel: CharactersViewModel? = null
+    private val viewModel: CharactersViewModel by viewModels()
     private var offset: Int = 1
-    private lateinit var binding: FragmentFirstBinding
+    private lateinit var binding: FragmentCharactersBinding
 
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View {
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_first, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_characters, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initVariables()
+        adapter = CharactersAdapter(resultList, this)
+        if (!requireActivity().applicationContext.isNetworkAvailable()) {
+            handleErrorDialog("Sem conexão com a internet. Tente novamente.")
+        }
         instanceViewModel()
         instanceRecyclerView()
     }
 
-    private fun initVariables() {
-        adapter = CharactersAdapter(resultList, this)
-        viewModel = ViewModelProviders.of(this).get(CharactersViewModel::class.java)
-    }
-
     private fun instanceViewModel() {
-        viewModel!!.getCharactersViewModel()
-        viewModel!!.listCharacters.observe(viewLifecycleOwner, { resultList: List<CharactersResult>? ->
+        viewModel.getCharactersViewModel()
+        viewModel.listCharacters.observe(viewLifecycleOwner, { resultList: List<CharactersResult>? ->
             adapter!!.updateList(resultList!!)
         })
 
-        viewModel!!.loading().observe(viewLifecycleOwner, { loading: Boolean ->
+        viewModel.loading().observe(viewLifecycleOwner, { loading: Boolean ->
             if (loading) {
                 progressBar!!.visibility = View.VISIBLE
             } else {
@@ -77,7 +76,7 @@ class CharactersFragment : Fragment(), OnClickDetails {
 
                 if (totalItemCount > 0 && endHasBeenReached) {
                     offset++
-                    viewModel!!.listCharacters
+                    viewModel.listCharacters
                 }
             }
         })
@@ -87,12 +86,6 @@ class CharactersFragment : Fragment(), OnClickDetails {
         val bundle = Bundle()
         bundle.putParcelable(RESULT_KEY, character)
         findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment, bundle)
-
-        //val intent = Intent(this, DetailsActivity::class.java)
-        //val bundle = Bundle()
-        //bundle.putParcelable(RESULT_KEY, result)
-        //intent.putExtras(bundle)
-        //startActivity(intent)
     }
 
 }

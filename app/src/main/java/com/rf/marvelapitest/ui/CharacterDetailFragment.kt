@@ -9,15 +9,15 @@ import com.rf.marvelapitest.R
 import com.rf.marvelapitest.models.EndPoints.RESULT_KEY
 import com.rf.marvelapitest.models.character.CharactersResult
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.fragment_second.*
+import kotlinx.android.synthetic.main.fragment_characters_detail.*
 
-class CharacterItemFragment : Fragment() {
+class CharacterDetailFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_second, container, false)
+        return inflater.inflate(R.layout.fragment_characters_detail, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
