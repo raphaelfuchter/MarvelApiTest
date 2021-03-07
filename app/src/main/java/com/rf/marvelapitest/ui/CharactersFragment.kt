@@ -15,8 +15,8 @@ import com.rf.marvelapitest.models.EndPoints.RESULT_KEY
 import com.rf.marvelapitest.models.character.CharactersResult
 import com.rf.marvelapitest.network.isNetworkAvailable
 import com.rf.marvelapitest.ui.adapter.CharactersAdapter
-import com.rf.marvelapitest.ui.interfaces.BaseFragment
-import com.rf.marvelapitest.ui.interfaces.OnClickDetails
+import com.rf.marvelapitest.ui.core.BaseFragment
+import com.rf.marvelapitest.ui.core.OnClickDetails
 import com.rf.marvelapitest.ui.viewmodel.CharactersViewModel
 import kotlinx.android.synthetic.main.fragment_characters.*
 import java.util.*

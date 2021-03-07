@@ -1,4 +1,4 @@
-package com.rf.marvelapitest.ui.interfaces
+package com.rf.marvelapitest.ui.core
 
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment

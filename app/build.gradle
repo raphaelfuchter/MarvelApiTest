@@ -46,27 +46,28 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
     implementation 'androidx.navigation:navigation-fragment-ktx:2.3.3'
     implementation 'androidx.navigation:navigation-ui-ktx:2.3.3'
-
-    implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
-
-    def lifecycle_version = "1.1.1"
-    implementation "android.arch.lifecycle:extensions:$lifecycle_version"
     implementation 'androidx.annotation:annotation:1.1.0'
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
+    implementation "android.arch.lifecycle:extensions:$lifecycle_version"
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
-    annotationProcessor "android.arch.lifecycle:compiler:$lifecycle_version"
 
+    /**
+     * RxAndroid (AndroidSchedulers)
+     * https://github.com/ReactiveX/RxAndroid
+     */
     implementation "io.reactivex.rxjava2:rxandroid:2.0.2"
-    implementation "io.reactivex.rxjava2:rxjava:2.1.9"
 
-    // Retrofit
+    /**
+     * Retrofit
+     * https://github.com/square/retrofit
+     */
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
     implementation "com.squareup.retrofit2:adapter-rxjava2:2.3.0"
-    implementation "com.squareup.retrofit2:retrofit:2.9.0"
     implementation "com.squareup.retrofit2:converter-gson:2.4.0"
 
-    // Picasso
-    implementation 'com.squareup.picasso:picasso:2.71828'
-    implementation 'de.hdodenhof:circleimageview:3.0.0'
-
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-
+    /**
+     * Picasso
+     * https://github.com/square/picasso
+     */
+    implementation "com.squareup.picasso:picasso:$picasso_version"
 }

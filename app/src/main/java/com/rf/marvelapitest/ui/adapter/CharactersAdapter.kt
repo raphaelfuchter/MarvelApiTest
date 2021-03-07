@@ -8,7 +8,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.rf.marvelapitest.R
 import com.rf.marvelapitest.models.character.CharactersResult
-import com.rf.marvelapitest.ui.interfaces.OnClickDetails
+import com.rf.marvelapitest.ui.core.OnClickDetails
 import com.squareup.picasso.Picasso
 
 class CharactersAdapter(private var listresult: List<CharactersResult>, private val listener: OnClickDetails)
